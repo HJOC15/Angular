@@ -1,5 +1,5 @@
 <div *ngIf="mode==='small'" class="card-player player-small">
-    <img [src]="track.cover" [alt]="track.name" class="cover">
+    <img  appImgBroken [customImg]="'https://es.trenddetail.com/content/uploads/2022/10/15/840b5539b3.jpg'" [src]="track.cover" [alt]="track.name" class="cover">
     <div class="content-player">
         {{track.name}}
     </div>
@@ -16,7 +16,7 @@
 <!-- Diseño del mode (big)-->
 <div *ngIf="mode==='big'" class="card-player player-big">
 
-    <img [src]="track.cover" alt="" class="cover">
+    <img appImgBroken [customImg]="'https://es.trenddetail.com/content/uploads/2022/10/15/840b5539b3.jpg'" [src]="track.cover" alt="" class="cover">
 
     <div class="content-player">
         <div class="title-track">{{track.name}}</div>
