@@ -25,10 +25,11 @@ export class TracksPageComponent implements OnInit, OnDestroy{
     })
 
     this.trackService.getAllRandom$()
-    .subscribe((response : TrackModel[]) => {
+    .subscribe((response:TrackModel[]) =>{
       this.tracksRandom = response
     })
 
+    
     
   }
   ngOnDestroy(): void {
