@@ -1,4 +1,5 @@
 import { Injectable , EventEmitter } from '@angular/core';
+import { TrackModel } from '@core/models/tracks.model';
 import { BehaviorSubject, Observable, Observer, Subject } from 'rxjs';
 
 @Injectable({
@@ -7,14 +8,33 @@ import { BehaviorSubject, Observable, Observer, Subject } from 'rxjs';
 export class MultimediaService {
   callback: EventEmitter <any> = new EventEmitter <any>()
 
-  myObservable1$: BehaviorSubject<any> = new BehaviorSubject('XDXDXD')
+  
+  public trackInfo$: BehaviorSubject<any> = new BehaviorSubject(undefined)
+  public audio!: HTMLAudioElement
+
 
   constructor() {
-    
+    this.audio = new Audio()
+    this.trackInfo$.subscribe(responseOk =>{
+      if (responseOk) {
+        this.setAudio(responseOk)
+      }
+      
+    })
     
    }
 
   private listenAllElements(): void{
 
+  }
+
+
+  //Funciones publicas
+
+  public setAudio(track: TrackModel): void{
+    
+    console.log('Desde el servicio', track)
+    this.audio.src = track.url
+    this.audio.play()
   }
 }
