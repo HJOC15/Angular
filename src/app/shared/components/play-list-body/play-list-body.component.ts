@@ -13,10 +13,6 @@ export class PlayListBodyComponent implements OnInit {
   constructor(private TrackService: TrackService) { }
 
   ngOnInit(): void {
-    this.TrackService.getAllTracks$()
-    .subscribe((response : TrackModel[]) => {
-      this.tracks = response
-    });
   }
 
   changeSort(property:string):void{
