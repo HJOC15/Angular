@@ -13,13 +13,17 @@ export class PlayListBodyComponent implements OnInit {
   constructor(private TrackService: TrackService) { }
 
   ngOnInit(): void {
+    this.TrackService.getAllTracks$()
+    .subscribe((response : TrackModel[]) => {
+      this.tracks = response
+    });
   }
 
   changeSort(property:string):void{
     const { order } = this.optionSort
     this.optionSort = {
       property,
-      order: order === 'asc' ? 'desc' : 'asc'
+      order: order == 'asc' ? 'desc' : 'asc'
     }
     console.log(this.optionSort);
   }
